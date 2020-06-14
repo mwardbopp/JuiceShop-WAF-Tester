@@ -73,7 +73,7 @@ describe('/rest/products/search', () => {
     })
   })
 
-  xdescribe('challenge "christmasSpecial"', () => {
+  describe('challenge "christmasSpecial"', () => {
     protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
 
     it('search query should reveal logically deleted christmas special product on SQL injection attack', () => {
