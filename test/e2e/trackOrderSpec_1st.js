@@ -14,7 +14,6 @@ describe('/#/track-order', () => {
         browser.get(protractor.basePath + '/#/track-result')
         browser.waitForAngularEnabled(false)
         browser.get(protractor.basePath + '/#/track-result?id=<iframe src="javascript:alert(`xss`)">')
-        browser.pause(500);
         browser.refresh()
 
         browser.wait(EC.alertIsPresent(), 5000, "'xss' alert is not present on /#/track-result ")
