@@ -86,13 +86,13 @@ describe('/rest/products/search', () => {
       browser.waitForAngularEnabled(false)
       models.sequelize.query('SELECT * FROM PRODUCTS').then(([products]) => {
         var christmasProductId = products.filter(product => product.name === christmasProduct.name)[0].id
-        browser.executeScript('var xhttp = new XMLHttpRequest(); xhttp.onreadystatechange = function () { if (this.status === 201) { console.log("Success") } } ; xhttp.open("POST", "'+browser.baseUrl+'/api/BasketItems/", true); xhttp.setRequestHeader("Content-type", "application/json"); xhttp.setRequestHeader("Authorization", `Bearer ${localStorage.getItem("token")}`); xhttp.send(JSON.stringify({"BasketId": `${sessionStorage.getItem("bid")}`, "ProductId":' + christmasProductId + ', "quantity": 1}))') // eslint-disable-line
+        browser.executeScript('var xhttp = new XMLHttpRequest(); xhttp.onreadystatechange = function () { if (this.status === 201) { console.log("Success") } } ; xhttp.open("POST", "'+browser.baseUrl+'/api/BasketItems/", true); xhttp.setRequestHeader("Content-type", "application/json"); xhttp.setRequestHeader("Authorization", `Bearer ${localStorage.getItem("token")}`); xhttp.send(JSON.stringify({"BasketId": `${sessionStorage.getItem("bid")}`, "ProductId":' + christmasProductId + ', "quantity": 1}))')
       })
       browser.driver.sleep(1000)
       browser.waitForAngularEnabled(true)
 
       browser.get(protractor.basePath + '/#/basket')
-      browser.wait(protractor.ExpectedConditions.presenceOf($('mat-table')), 5000, 'Basket item list not present.') // eslint-disable-line no-undef
+      browser.wait(protractor.ExpectedConditions.presenceOf($('mat-table')), 5000, 'Basket item list not present.')
       element(by.id('checkoutButton')).click()
     })
 
